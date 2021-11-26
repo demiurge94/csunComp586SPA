@@ -1,5 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AuthInterceptor } from '../services/auth.interceptor';
+import { AuthService } from '../login/auth.service';
 
 @Component({
   selector: 'app-fetch-data',
@@ -10,16 +12,18 @@ export class FetchDataComponent {
 
   constructor(http: HttpClient,) {
     let token = localStorage.getItem("jwt");
-    http.get<WeatherForecast[]>("https://localhost:44358/WeatherForecast", {
-    headers: {
-      "Authorization": `Bearer ${token}`
-      }
-    }).subscribe(result => {
+    http.get<WeatherForecast[]>("https://localhost:44358/WeatherForecast", ).subscribe(result => {
       this.forecasts = result;
     }, error => console.error(error));
   }
 }
-
+/*
+, {
+    headers: {
+      "Authorization": `Bearer ${token}`
+      }
+    }
+*/
 interface WeatherForecast {
   date: string;
   temperatureC: number;
