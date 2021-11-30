@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { LoginComponent } from './login/login.component';
+import {MatTableModule} from '@angular/material/table'; 
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { LoginComponent } from './login/login.component';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    MatTableModule,
    // ApiAuthorizationModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
