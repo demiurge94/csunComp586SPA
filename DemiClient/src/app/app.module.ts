@@ -10,13 +10,10 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { LoginComponent } from './login/login.component';
-<<<<<<< HEAD
 import { MatTableModule} from '@angular/material/table'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-=======
 import { AuthService } from './login/auth.service';
 import { AuthInterceptor } from './services/auth.interceptor';
->>>>>>> d6e06d891ea308abc7e72674372b6c0d8a9ff464
 
 @NgModule({
   declarations: [
@@ -31,12 +28,10 @@ import { AuthInterceptor } from './services/auth.interceptor';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-<<<<<<< HEAD
+
     BrowserAnimationsModule,
     MatTableModule,
-=======
     ReactiveFormsModule,
->>>>>>> d6e06d891ea308abc7e72674372b6c0d8a9ff464
    // ApiAuthorizationModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
