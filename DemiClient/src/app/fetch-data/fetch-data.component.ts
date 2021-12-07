@@ -1,17 +1,16 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-<<<<<<< HEAD
+
 import {MatTableModule} from '@angular/material/table'; 
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { MatPaginator } from '@angular/material/paginator';
 import {MatSort, SortDirection} from '@angular/material/sort';
 import {merge, Observable, of as observableOf} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
-=======
+
 import { AuthInterceptor } from '../services/auth.interceptor';
 import { AuthService } from '../login/auth.service';
 
->>>>>>> d6e06d891ea308abc7e72674372b6c0d8a9ff464
 @Component({
   selector: 'app-fetch-data',
   templateUrl: './fetch-data.component.html',
