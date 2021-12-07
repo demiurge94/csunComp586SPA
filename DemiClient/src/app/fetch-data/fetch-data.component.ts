@@ -20,10 +20,11 @@ import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 
 export class FetchDataComponent {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  dataSource = TEST_DATA;
   expandedElement: PeriodicElement | null | undefined;
-  columnsToDisplay = ['name', 'weight', 'symbol', 'position'];
+  columnsToDisplay = ['Genre', 'year', 'description', 'predecessor'];
   public forecasts: WeatherForecast[] = [];
+  public bands: artists[] = TEST_ARTISTS; 
 
   constructor(http: HttpClient,) {
     let token = localStorage.getItem("jwt");
@@ -44,6 +45,20 @@ interface WeatherForecast {
   summary: string;
 }
 
+interface Genres{
+  id: number; 
+  Genre: string; 
+  description: string; 
+  year: number; 
+  predecessor: string; //not sure how going to apply this yet
+}
+interface artists{
+  id: number; 
+  name: string;
+  genre: number,
+  description: string;
+  year: number; 
+}
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -51,7 +66,39 @@ export interface PeriodicElement {
   symbol: string;
   description: string;
 }
+const TEST_ARTISTS: artists[] = [
+  {
+    id: 1,
+    name: "Black Sabbath",
+    genre: 2,
+    year: 1970,
+    description: 'test',
+  }
+]
+const TEST_DATA: Genres[] = [
+  {
+    id: 1,
+    Genre: 'Pre-Metal',
+    description: 'Classical music has had a great influence on Heavy Metal',
+    year: 1708,
+    predecessor: "",
+  },
+  {
+    id: 2,
+    Genre: 'Proto-Metal',
+    description: 'The fathers of Metal',
+    year: 1960,
+    predecessor: 'pre-metal'
+  },
+  {
+    id: 3,
+    Genre: 'Original Hard Rock',
+    description: ' hard-rock',
+    year: 1974,
+    predecessor: 'pre-metal',
 
+  }
+];
 const ELEMENT_DATA: PeriodicElement[] = [
   {
     position: 1,
