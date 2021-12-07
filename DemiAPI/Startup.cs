@@ -34,7 +34,7 @@ namespace DemiAPI
         {
 
             services.AddControllers();
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnStr")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnStr2")));
 
             //For Identity
             services.AddIdentity<ApplicationUser, IdentityRole>()
