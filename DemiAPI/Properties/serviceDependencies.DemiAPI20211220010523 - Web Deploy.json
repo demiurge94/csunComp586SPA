@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "apis1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/DemiAPI/apis/DemiAPI",
+      "type": "apis.azure"
+    },
+    "mssql1": {
+      "type": "mssql.onprem",
+      "connectionId": "ConnectionStrings:ConnStr3",
+      "secretStore": "AzureAppSettings"
+    },
+    "mssql2": {
+      "type": "mssql.onprem",
+      "connectionId": "ConnectionStrings:ConnStr2",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

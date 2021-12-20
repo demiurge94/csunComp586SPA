@@ -37,7 +37,7 @@ export class FetchDataComponent {
     /*http.get<WeatherForecast[]>("https://localhost:44358/WeatherForecast", ).subscribe(result => {
       this.forecasts = result;
     }, error => console.error(error));*/
-    http.get<GenreList[]>("https://localhost:44358/api/Genres", ).subscribe(g => {this.genres = g;},
+    http.get<GenreList[]>("https://demiapi20211220010523.azurewebsites.net/api/Genres", ).subscribe(g => {this.genres = g;},
     error => console.error(error));
     let token = localStorage.getItem("jwt");
     console.log(token);

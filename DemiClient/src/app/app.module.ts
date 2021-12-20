@@ -32,6 +32,8 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { RegisterComponent } from './register/register/register.component';
+import { ArtistViewComponent } from './artist/artist-view/artist-view.component';
+import { ArtistDetailModalComponent } from './artist-detail-modal/artist-detail-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,9 @@ import { RegisterComponent } from './register/register/register.component';
     FetchDataComponent,
     LoginComponent,
     ArtistModalComponent,
-    RegisterComponent
+    RegisterComponent,
+    ArtistViewComponent,
+    ArtistDetailModalComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -57,7 +61,8 @@ import { RegisterComponent } from './register/register/register.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent},
       { path: 'Login', component: LoginComponent},
-      { path: 'register', component: RegisterComponent }
+      { path: 'register', component: RegisterComponent },
+      { path: 'artist' , component: ArtistViewComponent}
     ]),
    NgbModule,
    MdbAccordionModule,

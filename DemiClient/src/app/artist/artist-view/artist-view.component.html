@@ -1,0 +1,22 @@
+<h1 id = "tableLabel">List of Artists in Archive</h1>
+
+<p *ngIf = "!listOfArtists"><em>Loading....</em></p>
+
+<table class ="table table-striped" aria-labelledby="tableLabel" *ngIf = "listOfArtists">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Genre</th>
+            <th>Bio</th>
+            <th>More</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let artist of listOfArtists">
+            <td>{{artist.artistName}}</td>
+            <td>{{artist.genre}}</td>
+            <td>{{artist.artistBio}}</td>
+            <td><button class="btn btn-primary" (click)="openModal(artist.artistName)">View Albums</button></td>
+        </tr>
+    </tbody>
+</table>

@@ -13,7 +13,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string) {
-    return this.http.post<any>('https://localhost:44358/api/Authenticate/Login', {username: username, password: password})
+    return this.http.post<any>('https://demiapi20211220010523.azurewebsites.net/api/Authenticate/Login', {username: username, password: password})
     .pipe(map(user => {
         if (user && user.token) {
           localStorage.setItem("jwt", user.token);

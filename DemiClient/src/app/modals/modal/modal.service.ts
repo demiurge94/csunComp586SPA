@@ -6,6 +6,7 @@ import { FetchDataComponent } from 'src/app/fetch-data/fetch-data.component';
 export class ModalService {
   private data!: number;
   private titl!: string;
+  private artist!: string;
   constructor() { }
   setData(data:number, title: string){
     this.data = data; 
@@ -23,5 +24,11 @@ export class ModalService {
   }
   clearData(){
     this.data = 0;
+  }
+  setArtistData(artistName: string){
+    this.artist =artistName;
+  }
+  getArtistData(){
+    return this.artist; 
   }
 }
