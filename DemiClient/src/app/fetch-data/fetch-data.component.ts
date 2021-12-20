@@ -1,19 +1,21 @@
 import { Component, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ArtistModalComponent} from '../modals/modal/artist-modal.component';
 import {MatTableModule} from '@angular/material/table'; 
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { MatPaginator } from '@angular/material/paginator';
 import {MatSort, SortDirection} from '@angular/material/sort';
 import {merge, Observable, of as observableOf} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
-
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { AuthInterceptor } from '../services/auth.interceptor';
 import { AuthService } from '../login/auth.service';
-
+import { Subscription } from 'rxjs';
+import { ModalService } from '../modals/modal/modal.service';
 @Component({
   selector: 'app-fetch-data',
   templateUrl: './fetch-data.component.html',
+  
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({height: '0px', minHeight: '0'})),
@@ -21,37 +23,58 @@ import { AuthService } from '../login/auth.service';
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
   ],
+  
 })
 
 export class FetchDataComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = TEST_DATA;
-  expandedElement: PeriodicElement | null | undefined;
-  columnsToDisplay = ['Genre', 'year', 'description', 'predecessor'];
+  expandedElement: GenreList | null | undefined;
+  columnsToGet = ['name', 'year', 'predecessor'];
+  columnsToDisplay = ['Name', 'Year', 'Predecessor'];
   public forecasts: WeatherForecast[] = [];
-  public bands: artists[] = TEST_ARTISTS; 
-
-  constructor(http: HttpClient,) {
-    let token = localStorage.getItem("jwt");
-    http.get<WeatherForecast[]>("https://localhost:44358/WeatherForecast", ).subscribe(result => {
+  public genres: GenreList[] = []; 
+  modalRef!: MdbModalRef<ArtistModalComponent>;
+  constructor(http: HttpClient, private modalService: MdbModalService, private modalServe: ModalService) {
+    /*http.get<WeatherForecast[]>("https://localhost:44358/WeatherForecast", ).subscribe(result => {
       this.forecasts = result;
-    }, error => console.error(error));
+    }, error => console.error(error));*/
+    http.get<GenreList[]>("https://localhost:44358/api/Genres", ).subscribe(g => {this.genres = g;},
+    error => console.error(error));
+    let token = localStorage.getItem("jwt");
+    console.log(token);
   }
+  subscription!: Subscription; 
+  openModal(genre: number, title: string) {
+    this.modalServe.setData(genre, title);
+    this.modalRef = this.modalService.open(ArtistModalComponent, {data: { },
+    modalClass: 'modal-xl'} );
+    
+    console.log("genre: " ); 
+  }
+  
+  
 }
-/*
-, {
-    headers: {
-      "Authorization": `Bearer ${token}`
-      }
-    }
-*/
-interface WeatherForecast {
+
+
+
+
+interface Decade{
+  Era: string;
+  Number: number;
+  nextDecade: number;
+}
+export interface WeatherForecast {
   date: string;
   temperatureC: number;
   temperatureF: number;
   summary: string;
 }
-
+export interface GenreList{
+  genreId: number;
+  Name: string;
+  Year: number;
+  Predecessor: number;
+  description: string;
+}
 interface Genres{
   id: number; 
   Genre: string; 
@@ -59,13 +82,7 @@ interface Genres{
   year: number; 
   predecessor: string; //not sure how going to apply this yet
 }
-interface artists{
-  id: number; 
-  name: string;
-  genre: number,
-  description: string;
-  year: number; 
-}
+
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -73,15 +90,8 @@ export interface PeriodicElement {
   symbol: string;
   description: string;
 }
-const TEST_ARTISTS: artists[] = [
-  {
-    id: 1,
-    name: "Black Sabbath",
-    genre: 2,
-    year: 1970,
-    description: 'test',
-  }
-]
+
+
 const TEST_DATA: Genres[] = [
   {
     id: 1,

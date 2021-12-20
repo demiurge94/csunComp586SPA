@@ -23,39 +23,39 @@
   </tbody>
 </table> -->
 
-
 <table mat-table
-       [dataSource]="dataSource" multiTemplateDataRows
+       [dataSource]="genres" multiTemplateDataRows
        class="mat-elevation-z8">
-  <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+  <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToGet">
     <th mat-header-cell *matHeaderCellDef> {{column}} </th>
     <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
   </ng-container>
 
   <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
   <ng-container matColumnDef="expandedDetail">
-    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
-      <div class="example-element-detail"
+    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToGet.length">
+      <div class="genre-element-detail"
            [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-        <div class="example-element-diagram">
-          <div class="example-element-position"> {{element.id}} </div>
-          <div class="example-element-symbol"> {{element.symbol}} </div>
-          <div class="example-element-name"> {{element.name}} </div>
-          <div class="example-element-weight"> {{element.year}} </div>
+        <div class="genre-element-diagram">
+          <div class="genre-element-position"> Emergence Year:</div>
+          <div class="genre-element-symbol"> {{element.year}} </div>
+          <div class="genre-element-name"></div>
+          <div class="genre-element-weight"> {{element.predecessor}} </div>
         </div>
-        <div class="example-element-description">
-          {{element.description}}
-          <span class="example-element-description-attribution"> -- Wikipedia </span>
+        <div class="genre-element-description">
+          {{element.description}} <button class="btn btn-primary" (click)="openModal(element.genreId, element.name)">View bands</button>
+
+          <span class="genre-element-description-attribution"> -- Wikipedia </span>
         </div>
       </div>
     </td>
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
-      class="example-element-row"
+  <tr mat-header-row *matHeaderRowDef="columnsToGet"></tr>
+  <tr mat-row *matRowDef="let element; columns: columnsToGet;"
+      class="genre-element-row"
       [class.example-expanded-row]="expandedElement === element"
       (click)="expandedElement = expandedElement === element ? null : element">
   </tr>
-  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="genre-detail-row"></tr>
 </table>

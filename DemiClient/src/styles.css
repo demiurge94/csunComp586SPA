@@ -1,49 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
+
 table {
     width: 100%;
   }
   
-  tr.example-detail-row {
+  tr.genre-detail-row {
     height: 0;
   }
   
-  tr.example-element-row:not(.example-expanded-row):hover {
+  tr.genre-element-row:not(.example-expanded-row):hover {
     background: whitesmoke;
   }
   
-  tr.example-element-row:not(.example-expanded-row):active {
+  tr.genre-element-row:not(.example-expanded-row):active {
     background: #efefef;
   }
   
-  .example-element-row td {
+  .genre-element-row td {
     border-bottom-width: 0;
   }
   
-  .example-element-detail {
+  .genre-element-detail {
     overflow: hidden;
     display: flex;
   }
   
-  .example-element-diagram {
+  .genre-element-diagram {
     min-width: 160px;
     border: 2px solid rgb(0, 0, 0);
     padding: 8px;
     font-weight: lighter;
     margin: 8px 0;
-    height: 275px;
+    height: 125px;
   }
   
-  .example-element-symbol {
+  .genre-element-symbol {
     font-weight: bold;
     font-size: 40px;
     line-height: normal;
   }
   
-  .example-element-description {
+  .genre-element-description {
     padding: 16px;
   }
   
-  .example-element-description-attribution {
+  .genre-element-description-attribution {
     opacity: 0.5;
   }
-  
+  .dark-row{
+    background-color: #b2b2b2;
+  }
+  @import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+@import '~@fortawesome/fontawesome-free/scss/regular.scss';
+@import '~@fortawesome/fontawesome-free/scss/brands.scss';
+ 
+@import '~mdb-angular-ui-kit/assets/scss/mdb.scss';

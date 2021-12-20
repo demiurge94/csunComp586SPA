@@ -17,6 +17,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Identity;
 using System.Text;
+using DemiAPI.Models;
+
 
 namespace DemiAPI
 {
@@ -32,9 +34,10 @@ namespace DemiAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            
             services.AddControllers();
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnStr")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnStr2")));
+            services.AddDbContext<MetalMusicContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnStr3")));
 
             //For Identity
             services.AddIdentity<ApplicationUser, IdentityRole>()

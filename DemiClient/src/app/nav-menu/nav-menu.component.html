@@ -34,15 +34,33 @@
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-light" [routerLink]="['/fetch-data']"
-              >Fetch data</a
+              >Genres</a
             >
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-light" *ngIf= "!isAuthenticated()" [routerLink]="['/register']">
+              Register
+            </a>
+           
+  
           </li>
         
         <li class="nav-item" [routerLinkActive]="['link-active']">
-          <a class="nav-link text-light" [routerLink]="['/Login']"
-            >Login</a
-          >
+          <a class="nav-link text-light" *ngIf= "!isAuthenticated()" [routerLink]="['/Login']">
+            Login
+          </a>
+         
+
         </li>
+        
+        <li class="nav-item" [routerLinkActive]="['link-active']">
+          <a class="nav-link text-light" *ngIf= "isAuthenticated()" (click)="onLogout()" [routerLink]="['/']">
+            Logout
+          </a>
+         
+
+        </li>
+        
       </ul>
       
       </div>
