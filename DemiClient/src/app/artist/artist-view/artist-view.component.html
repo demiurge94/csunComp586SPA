@@ -15,7 +15,7 @@
         <tr *ngFor = "let artist of listOfArtists">
             <td>{{artist.artistName}}</td>
             <td>{{artist.genre}}</td>
-            <td>{{artist.artistBio}}</td>
+            <td>{{artist.artistBio}}  <span class="genre-element-description-attribution"> -- Wikipedia </span></td>
             <td><button class="btn btn-primary" (click)="openModal(artist.artistName)">View Albums</button></td>
         </tr>
     </tbody>

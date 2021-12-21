@@ -11,7 +11,7 @@
         (click)="modalRef.close()"
       ></button>
   </div>
-  <p id="tableLabel" *ngFor = "let artist of artistDetail">{{artist.artistBio}}</p>
+  <p id="tableLabel" *ngFor = "let artist of artistDetail">{{artist.artistBio}}  <span class="genre-element-description-attribution"> -- Wikipedia </span></p>
   <table class='table table-striped' aria-labelledby="tableLabel" *ngFor = "let artist of artistDetail" >
     
     <tbody  >
