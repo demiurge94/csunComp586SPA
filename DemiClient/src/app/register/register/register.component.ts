@@ -24,10 +24,10 @@ export class RegisterComponent  {
       }
     )
   }
-  saveUser():void{
-    if(this.userForm.dirty && this.userForm.valid){
-     
-    }
+  saveUser(){
+      console.log(this.userForm.controls['name'].value);
+      return this.authService.registerUser(this.userForm.controls['name'].value, this.userForm.controls['email'].value, this.userForm.controls['password'].value);
+    
   }
 
 }
